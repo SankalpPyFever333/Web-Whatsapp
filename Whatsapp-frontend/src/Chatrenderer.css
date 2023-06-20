@@ -1,0 +1,38 @@
+.ChatStyle{
+      
+}
+
+.messageAndTime{
+      display: flex;
+      justify-content: space-between;
+      width: 58vw;
+      
+}
+.messageAndTime>p{
+      background-color: rgb(100, 205, 30);
+
+}
+
+.timetick{
+      position: relative;
+}
+
+.timetick span{
+      font-size: 12px;
+      color: rgb(148, 141, 141);
+      position: absolute;
+      bottom: 0;
+      padding: 4px;
+      width: 5vw;
+
+
+}
+
+.timetick span .MuiSvgIcon-root{
+      font-size: 16px;
+      position: absolute;
+      bottom: 0;
+      padding: 4px;
+      width: 5vw;
+      margin-left: 10px;
+}

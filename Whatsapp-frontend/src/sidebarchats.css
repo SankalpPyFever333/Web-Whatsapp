@@ -1,0 +1,23 @@
+.sidebarChat_contact{
+      display: flex;
+      padding: 20px;
+      cursor: pointer;
+      border-bottom: 1px solid gray;
+}
+
+.sidebarChat_contact:hover{
+      background-color:rgb(235, 233, 231) ;
+}
+
+
+.nameMessage{
+      margin-left: 15px;
+}
+
+.nameMessage>h3{
+      margin-bottom: 10px;
+      font-size: 16px;
+}
+
+
+

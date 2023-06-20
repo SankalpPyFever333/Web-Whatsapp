@@ -1,0 +1,73 @@
+.sidebar{
+      display: flex;
+      flex-direction: column;
+      flex: 0.30;
+}
+
+.sidebar_header{
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
+      background-color: white;
+      border-right: 2px solid rgb(212, 212, 212);
+}
+
+.sidebar_header_right{
+      display: flex;
+      justify-content: space-between;
+      min-width: 10vw;
+      align-items: center;
+}
+
+/* targeting IconButton(it's classname is MuiSvgIcon-root) */
+
+/* Targeting .MuiSvgIcon-root which is inside the .sidebar_header_right class */
+.sidebar_header_right .MuiSvgIcon-root{
+      margin-right: 2vw;
+      font-size: 22px !important;
+}
+
+.sidebar_search{
+      display: flex;
+      align-items: center;
+      height: 40px;
+      padding: 10px;
+      background-color: rgb(231, 216, 216);
+}
+.sidebar_searchContainer{
+      background-color: rgb(187, 183, 183);
+      border-radius: 8px;
+      width: 92%;
+      display: flex;
+      align-items: center;
+      height: 45px;
+}
+
+.sidebar_searchContainer > .MuiSvgIcon-root{
+      color: grey;
+      padding: 10px;
+}
+
+.sidebar_searchContainer > input{
+      height: 30px;
+      border-radius: 8px;
+      width: 70%;
+      margin-left: 10px;
+      border: none;
+      background-color: rgb(231, 225, 225);
+      outline-width: 0px;
+      
+}
+
+.sidebar_chats{
+      flex: 1;
+      overflow: scroll;
+      background-color: rgb(255, 255, 255);
+      
+}
+
+/* removing the scroll bar */
+.sidebar_chats::-webkit-scrollbar{
+      display: none;
+}
+
