@@ -3,23 +3,14 @@ import './Chatrenderer.css'
 import DoneAllIcon from "@mui/icons-material/DoneAll";
 function Chatrenderer() {
   return (
-    <div className='ChatStyle'>
-      <div className="messageAndTime">
-            {/* make p and time tick in one div */}
-            <p>Abhi Aur milengi</p>
-            <div className="timetick">
-                  <span>9:30 am</span>
-                  <span>
-                        <DoneAllIcon/>
-                  </span>
-            </div>
-
-
-            
-      </div>
-      
+    <div className="ChatStyle">
+      <p className="chat_message chat_reciever">
+        I will do
+        <span className="chat_timestamp">{new Date().toUTCString()}</span>
+        <DoneAllIcon />
+      </p>
     </div>
-  )
+  );
 }
 
 export default Chatrenderer

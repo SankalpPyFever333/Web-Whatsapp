@@ -30,19 +30,36 @@
 .nameLastseen {
       margin-left: 12px;
       padding: 8px;
-      font-size: 16px;
+      font-size: smaller;
 }
 
 .MessageTypingFooter{
-      position: relative;
+      
       position: absolute;
       bottom: 0;
+      background-color: rgb(72, 70, 70);
+      border-radius: 5px;
+
 }
+
+.chatrenderer{
+      overflow: scroll;
+
+}
+
+.chatrenderer::-webkit-scrollbar{
+      display: none;
+}
+
 
 .allIconsContainer{
       display: flex;
       justify-content: space-between;
       
+}
+
+.linkEmoji{
+      display: flex;
 }
 
 .linkEmoji .MuiSvgIcon-root{

@@ -12,8 +12,8 @@ function Sidebarchats() {
     <div data-aos="fade-up" className="sidebarChat_contact">
       <Avatar />
       <div data-aos="fade-up" className="nameMessage">
-        <h3>Anya</h3>
-        <p>theek h</p>
+        <h3>Muski</h3>
+        <p>I am not there</p>
       </div>
     </div>
   );

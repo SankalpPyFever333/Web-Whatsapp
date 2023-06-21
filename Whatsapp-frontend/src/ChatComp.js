@@ -14,7 +14,7 @@ function ChatComp() {
         <div className="Avatar_name">
           <Avatar />
           <div className="nameLastseen">
-            <h3>Anya</h3>
+            <h3>Muski</h3>
             <p>Last seen at 9:30 pm</p>
           </div>
         </div>
@@ -29,7 +29,17 @@ function ChatComp() {
       </div>
 
       {/* display messaged and chats: render the message component. */}
+      <div className="chatrenderer">
+
       <Chatrenderer/>
+      <Chatrenderer/>
+      <Chatrenderer/>
+      <Chatrenderer/>
+      <Chatrenderer/>
+      <Chatrenderer/>
+      <Chatrenderer/>
+      <Chatrenderer/>
+      </div>
     {/* message typing begin */}
       <div className="MessageTypingFooter">
         <div className="allIconsContainer">
