@@ -7,7 +7,7 @@ import axios from "./axios"
 
 
 function App() {
-  const {messages, setMessage} = useState([]);
+  const [messages, setMessage] = useState([]);
   useEffect(()=>{
     axios.get("/messages/sync")
     .then((response)=>{
@@ -27,10 +27,13 @@ function App() {
 
     // We have install pushser-js
     const channel = pusher.subscribe("messages");
-    channel.bind("inserted", function (data) {
-      alert(JSON.stringify(data));
+    channel.bind("inserted", function (newMessages) {
+      alert(JSON.stringify(newMessages));
+      setMessage([...messages , newMessages]);
+      // ... is spread operator
     });
-  },[]);
+  },[messages]); // We should include message as a dependency in this, this will triggered whenever the messages state variable changes.
+  console.log(messages);
   return (
     // we are using firebase also for hosting, Authentication.
     // And in backend I am using mongoDb, node and express.
