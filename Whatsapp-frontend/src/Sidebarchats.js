@@ -13,7 +13,7 @@ function Sidebarchats() {
       <Avatar />
       <div data-aos="fade-up" className="nameMessage">
         <h3>Muski</h3>
-        <p>I am not there</p>
+        <p>I love you sankalp</p>
       </div>
     </div>
   );
