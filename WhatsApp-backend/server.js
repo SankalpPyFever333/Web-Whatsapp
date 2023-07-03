@@ -1,7 +1,7 @@
 import express from "express";
 import mongoose, { mongo } from "mongoose";
 import Messages from "../WhatsApp-backend/dbmessages.js";
-
+import cors from "cors";
 import Pusher from "pusher";
 
 const app = express();
@@ -29,13 +29,36 @@ const pusher = new Pusher({
 
 
 // middlewares:
-
 app.use(express.json());     
+
+app.use(cors);
+
+
 
 
 const db = mongoose.connection;
 db.once("open" ,()=>{
       console.log("DB is connected");
+      const msgCollection = db.collection("messagecontents");
+      const changeStream = msgCollection.watch();
+      // watch() method returns a ChangeStream object that represents a change in collection in real-time. It allows to monitor and react to that change.
+      // It provide methods to interact with it like on(), close(), isClosed() , stream() etc.
+
+      changeStream.on("change" ,(change)=>{
+            console.log(`Change type is ${change.operationType}`);
+            if(change.operationType === "insert"){
+              const messageDetails = change.fullDocument; //This represent the document that was inserted, updated, replaced as a result of chnage event.
+
+              // pusher.trigger(channelName, eventName, eventData);
+              pusher.trigger("messages", "inserted", {
+                name: messageDetails.name,
+                message: messageDetails.message,
+              });
+            }
+            else{
+                  console.log("error in triggering pusher!");
+            }
+      })
 })
 
 // once() add a one-tiome listener to the event.
