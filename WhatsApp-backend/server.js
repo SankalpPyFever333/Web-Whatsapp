@@ -1,7 +1,7 @@
 import express from "express";
 import mongoose, { mongo } from "mongoose";
 import Messages from "../WhatsApp-backend/dbmessages.js";
-
+import cors from "cors";
 import Pusher from "pusher";
 
 const app = express();
@@ -31,7 +31,7 @@ const pusher = new Pusher({
 // middlewares:
 app.use(express.json());     
 
-// app.use(cors);
+app.use(cors());
 
 
 
