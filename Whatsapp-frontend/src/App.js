@@ -26,12 +26,26 @@ function App() {
     });
 
     // We have install pushser-js
+
+    // When you subscribe to a channel, you can listen for events triggered on that channel and perform actions accordingly.
+    // Inisde the bind(), we give the event name(here "inserted"), When that event occured in the subscribed channel, we listen it using bind() method.
     const channel = pusher.subscribe("messages");
     channel.bind("inserted", function (newMessages) {
       alert(JSON.stringify(newMessages));
-      setMessage([...messages , newMessages]);
+      setMessage([...messages, newMessages]);
       // ... is spread operator
     });
+
+    // clean-up function: This is used to ensure that all the resources, event listeners, timers are released when they are not in use. You should return that function.
+    
+    return ()=>{
+      channel.unbind_all();
+      channel.unsubscribe();
+      // releasing the resources.
+
+    }
+
+
   },[messages]); // We should include message as a dependency in this, this will triggered whenever the messages state variable changes.
   console.log(messages);
   return (
