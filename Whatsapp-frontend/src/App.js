@@ -1,21 +1,25 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-import ChatComp from './ChatComp';
 import Sidebar from './Sidebar';
 import Pusher from "pusher-js";
 import axios from "./axios"
-
+import Chatcomp from './ChatComp';
 
 function App() {
   const [messages, setMessage] = useState([]);
   useEffect(()=>{
-    axios.get("/messages/sync")
-    .then((response)=>{
-      setMessage(response.data);
-    })
-    .catch((error)=>{
-      console.log(`error occured: ${error}`);
-    })
+    const fetchdata = async ()=>{
+      try{
+        const response = await axios.get("/messages/sync");
+        setMessage(response.data);
+      }
+      catch(error){
+        console.log(`error occured: ${error}`);
+      }
+
+    }
+
+    fetchdata();
   },[]);
 
 
@@ -48,14 +52,20 @@ function App() {
 
   },[messages]); // We should include message as a dependency in this, this will triggered whenever the messages state variable changes.
   console.log(messages);
+
+  // if(messages.length == 0){
+  //   return <h3>Loading...</h3>
+  // }
+
   return (
     // we are using firebase also for hosting, Authentication.
     // And in backend I am using mongoDb, node and express.
     <div className="app">
       <div className="app_body">
-        {/* This has three component: status and call icon , SideBar and chat component */}        
+        {/* This has three component: status and call icon , SideBar and chat component */}
         <Sidebar />
-        <ChatComp />
+        <Chatcomp messages={messages} />
+        {/* passing message as a prop to chat cmponent. */}
       </div>
     </div>
   );

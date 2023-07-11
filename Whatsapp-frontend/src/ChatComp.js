@@ -7,7 +7,7 @@ import KeyboardVoiceIcon from "@mui/icons-material/KeyboardVoice";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
 import SentimentVerySatisfiedIcon from "@mui/icons-material/SentimentVerySatisfied";
 import Chatrenderer from './Chatrenderer';
-function ChatComp() {
+function Chatcomp({messages}) {
   return (
     <div className="chat">
       <div className="Chat_avatar_icons">
@@ -28,19 +28,11 @@ function ChatComp() {
         </div>
       </div>
 
-      {/* display messaged and chats: render the message component. */}
+      {/* display message and chats: render the message component. */}
       <div className="chatrenderer">
-
-      <Chatrenderer/>
-      <Chatrenderer/>
-      <Chatrenderer/>
-      <Chatrenderer/>
-      <Chatrenderer/>
-      <Chatrenderer/>
-      <Chatrenderer/>
-      <Chatrenderer/>
+        <Chatrenderer message={messages} />
       </div>
-    {/* message typing begin */}
+      {/* message typing begin */}
       <div className="MessageTypingFooter">
         <div className="allIconsContainer">
           <div className="linkEmoji">
@@ -50,7 +42,7 @@ function ChatComp() {
             <AttachFileIcon />
           </div>
           <div className="TypeMessage">
-            <input type="text" placeholder='Type a message' />
+            <input type="text" placeholder="Type a message" />
           </div>
           <div className="VoiceMessage">
             <IconButton>
@@ -64,4 +56,4 @@ function ChatComp() {
   );
 }
 
-export default ChatComp
+export default Chatcomp
