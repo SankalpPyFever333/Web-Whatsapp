@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./ChatComp.css";
 import { Avatar, IconButton } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import SendIcon from "@mui/icons-material/Send";
 import SearchIcon from "@mui/icons-material/Search";
 import KeyboardVoiceIcon from "@mui/icons-material/KeyboardVoice";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
@@ -10,10 +11,11 @@ import Chatrenderer from "./Chatrenderer";
 import axios from "./axios";
 function Chatcomp({ messages }) {
   const [input, setinput] = useState("");
+  const [sendButton, setSendButton] = useState(true);
 
   const handlekeyDown = async (event)=>{
     if(event.key === "Enter"){
-      // make a paost request:
+      // make a post request:
       await axios.post("/messages/new" ,{
         message: input,
         name: 'muski',
@@ -60,13 +62,35 @@ function Chatcomp({ messages }) {
             <AttachFileIcon />
           </div>
           <div className="TypeMessage">
-            <input value={input} onChange={(e)=> setinput(e.target.value)} onKeyDown={handlekeyDown} type="text" placeholder="Type a message" />
+            <input
+              value={input}
+              onChange={(e) => {
+                setinput(e.target.value);
+                // Now change the recording icon when user starts typing to send icon.
+                if(e.target.value.length!==0){
+                  setSendButton(false);
+                }
+                else{
+                  setSendButton(true);
+                }
+
+              }}
+              onKeyDown={handlekeyDown}
+              type="text"
+              placeholder="Type a message"
+            />
           </div>
           <div className="VoiceMessage">
-            <IconButton>
-              {/* convert voice icon to send icon if we start typing inside the input box. */}
-              <KeyboardVoiceIcon />
-            </IconButton>
+            {/* render voice icon if nothing in input and if something is in the input , then render send icon. */}
+            {sendButton ? (
+              <IconButton>
+                <KeyboardVoiceIcon />
+              </IconButton>
+            ) : (
+              <IconButton>
+                <SendIcon />
+              </IconButton>
+            )}
           </div>
         </div>
       </div>
