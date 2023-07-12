@@ -6,11 +6,16 @@ function Chatrenderer({messages}) {
     <div className="ChatStyle">
       {
         messages.map((message)=>{
-          return <p className="chat_message chat_reciever">
-            {message.message}
-            <span className="chat_timestamp">{message.timestamp}</span>
-            <DoneAllIcon />
-          </p>
+          return (
+            // adding the chat_reciever class only when the reciever is true.
+            <p
+              className={`chat_message ${message.receiver && "chat_reciever"} `}
+            >
+              {message.message}
+              <span className="chat_timestamp">{message.timestamp}</span>
+              <DoneAllIcon />
+            </p>
+          );
         })
       }
     </div>

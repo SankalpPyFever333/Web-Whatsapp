@@ -1,13 +1,13 @@
-import React from 'react'
-import "./ChatComp.css"
+import React from "react";
+import "./ChatComp.css";
 import { Avatar, IconButton } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import SearchIcon from "@mui/icons-material/Search";
 import KeyboardVoiceIcon from "@mui/icons-material/KeyboardVoice";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
 import SentimentVerySatisfiedIcon from "@mui/icons-material/SentimentVerySatisfied";
-import Chatrenderer from './Chatrenderer';
-function Chatcomp({messages}) {
+import Chatrenderer from "./Chatrenderer";
+function Chatcomp({ messages }) {
   return (
     <div className="chat">
       <div className="Chat_avatar_icons">
@@ -30,7 +30,7 @@ function Chatcomp({messages}) {
 
       {/* display message and chats: render the message component. */}
       <div className="chatrenderer">
-        <Chatrenderer message={messages} />
+        <Chatrenderer messages={messages} />
       </div>
       {/* message typing begin */}
       <div className="MessageTypingFooter">
@@ -56,4 +56,4 @@ function Chatcomp({messages}) {
   );
 }
 
-export default Chatcomp
+export default Chatcomp;

@@ -51,6 +51,7 @@ function App() {
 
 
   },[messages]); // We should include message as a dependency in this, this will triggered whenever the messages state variable changes.
+
   console.log(messages);
 
   // if(messages.length == 0){
