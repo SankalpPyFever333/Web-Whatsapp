@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ChatComp.css";
 import { Avatar, IconButton } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
@@ -7,7 +7,25 @@ import KeyboardVoiceIcon from "@mui/icons-material/KeyboardVoice";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
 import SentimentVerySatisfiedIcon from "@mui/icons-material/SentimentVerySatisfied";
 import Chatrenderer from "./Chatrenderer";
+import axios from "./axios";
 function Chatcomp({ messages }) {
+  const [input, setinput] = useState("");
+
+  const handlekeyDown = async (event)=>{
+    if(event.key === "Enter"){
+      // make a paost request:
+      await axios.post("/messages/new" ,{
+        message: input,
+        name: 'muski',
+        timstamp: "6:37pm",
+        receiver: true
+      });
+      setinput("");
+    }
+  }
+
+
+
   return (
     <div className="chat">
       <div className="Chat_avatar_icons">
@@ -42,7 +60,7 @@ function Chatcomp({ messages }) {
             <AttachFileIcon />
           </div>
           <div className="TypeMessage">
-            <input type="text" placeholder="Type a message" />
+            <input value={input} onChange={(e)=> setinput(e.target.value)} onKeyDown={handlekeyDown} type="text" placeholder="Type a message" />
           </div>
           <div className="VoiceMessage">
             <IconButton>
